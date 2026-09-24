@@ -106,9 +106,9 @@
                     <p class="text-xs text-gray-500 capitalize">{{ auth()->user()->role }}</p>
                 </div>
             </div>
-            <form method="POST" action="{{ route('logout') }}">
+            <form method="POST" action="{{ route('logout') }}" id="logout-form">
                 @csrf
-                <button type="submit" class="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition">
+                <button type="button" onclick="submitLogout()" class="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition">
                     <i class="fa fa-right-from-bracket text-sm"></i>
                     <span>Keluar</span>
                 </button>
@@ -195,6 +195,15 @@ function closeSidebar() {
     const o = document.getElementById('sidebar-overlay');
     s.classList.add('-translate-x-full');
     o.classList.add('hidden');
+}
+function submitLogout() {
+    // Ambil CSRF token segar dari meta tag, bukan dari form render awal
+    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    const form  = document.getElementById('logout-form');
+    // Update token di form sebelum submit
+    const input = form.querySelector('input[name="_token"]');
+    if (input) input.value = token;
+    form.submit();
 }
 // Auto dismiss alerts
 setTimeout(() => {

@@ -56,4 +56,8 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
+
+    // GET logout — alternatif untuk menghindari CSRF issue pada form POST
+    Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->name('logout.get');
 });

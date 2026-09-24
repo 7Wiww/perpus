@@ -31,41 +31,54 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // ── Admin Routes ───────────────────────────────────────────────────────
+    // ── Admin-only Routes ─────────────────────────────────────────────────
     Route::prefix('admin')->name('admin.')->middleware('role:admin')->group(function () {
-        Route::resource('buku', BukuController::class);
-        Route::resource('anggota', AnggotaController::class);
         Route::resource('kategori', KategoriController::class);
         Route::resource('user', UserController::class)->except(['show']);
+        // Admin-only write operations for buku & anggota
+        Route::post('buku',                 [BukuController::class, 'store'])->name('buku.store');
+        Route::get('buku/create',           [BukuController::class, 'create'])->name('buku.create');
+        Route::put('buku/{buku}',           [BukuController::class, 'update'])->name('buku.update');
+        Route::patch('buku/{buku}',         [BukuController::class, 'update']);
+        Route::delete('buku/{buku}',        [BukuController::class, 'destroy'])->name('buku.destroy');
+        Route::get('buku/{buku}/edit',      [BukuController::class, 'edit'])->name('buku.edit');
+        Route::post('anggota',              [AnggotaController::class, 'store'])->name('anggota.store');
+        Route::get('anggota/create',        [AnggotaController::class, 'create'])->name('anggota.create');
+        Route::put('anggota/{anggota}',     [AnggotaController::class, 'update'])->name('anggota.update');
+        Route::patch('anggota/{anggota}',   [AnggotaController::class, 'update']);
+        Route::delete('anggota/{anggota}',  [AnggotaController::class, 'destroy'])->name('anggota.destroy');
+        Route::get('anggota/{anggota}/edit',[AnggotaController::class, 'edit'])->name('anggota.edit');
     });
 
-    // ── Admin + Petugas shared (Buku & Anggota read) ───────────────────────
-    // Petugas can view buku & anggota
+    // ── Admin + Petugas: shared read access for Buku & Anggota ───────────
     Route::prefix('admin')->name('admin.')->middleware('role:admin,petugas')->group(function () {
-        // intentionally left empty; specific sharing handled in petugas routes
+        Route::get('buku',              [BukuController::class, 'index'])->name('buku.index');
+        Route::get('buku/{buku}',       [BukuController::class, 'show'])->name('buku.show');
+        Route::get('anggota',           [AnggotaController::class, 'index'])->name('anggota.index');
+        Route::get('anggota/{anggota}', [AnggotaController::class, 'show'])->name('anggota.show');
     });
 
     // ── Petugas Routes ────────────────────────────────────────────────────
     Route::prefix('petugas')->name('petugas.')->middleware('role:admin,petugas')->group(function () {
         // Peminjaman
-        Route::get('peminjaman',          [PeminjamanController::class, 'index'])->name('peminjaman.index');
-        Route::get('peminjaman/create',   [PeminjamanController::class, 'create'])->name('peminjaman.create');
-        Route::post('peminjaman',         [PeminjamanController::class, 'store'])->name('peminjaman.store');
-        Route::get('peminjaman/riwayat',  [PeminjamanController::class, 'riwayat'])->name('peminjaman.riwayat');
-        Route::get('peminjaman/{peminjaman}', [PeminjamanController::class, 'show'])->name('peminjaman.show');
+        Route::get('peminjaman',                  [PeminjamanController::class, 'index'])->name('peminjaman.index');
+        Route::get('peminjaman/create',           [PeminjamanController::class, 'create'])->name('peminjaman.create');
+        Route::post('peminjaman',                 [PeminjamanController::class, 'store'])->name('peminjaman.store');
+        Route::get('peminjaman/riwayat',          [PeminjamanController::class, 'riwayat'])->name('peminjaman.riwayat');
+        Route::get('peminjaman/{peminjaman}',     [PeminjamanController::class, 'show'])->name('peminjaman.show');
 
         // Pengembalian
-        Route::get('pengembalian',           [PengembalianController::class, 'index'])->name('pengembalian.index');
-        Route::get('pengembalian/proses',    [PengembalianController::class, 'proses'])->name('pengembalian.proses');
-        Route::post('pengembalian',          [PengembalianController::class, 'store'])->name('pengembalian.store');
-        Route::get('pengembalian/riwayat',   [PengembalianController::class, 'riwayat'])->name('pengembalian.riwayat');
+        Route::get('pengembalian',                [PengembalianController::class, 'index'])->name('pengembalian.index');
+        Route::get('pengembalian/proses',         [PengembalianController::class, 'proses'])->name('pengembalian.proses');
+        Route::post('pengembalian',               [PengembalianController::class, 'store'])->name('pengembalian.store');
+        Route::get('pengembalian/riwayat',        [PengembalianController::class, 'riwayat'])->name('pengembalian.riwayat');
     });
 
-    // ── Pimpinan Routes ───────────────────────────────────────────────────
-    Route::prefix('pimpinan')->name('pimpinan.')->middleware('role:admin,pimpinan')->group(function () {
-        Route::get('laporan',          [LaporanController::class, 'index'])->name('laporan.index');
-        Route::get('laporan/pdf',      [LaporanController::class, 'exportPdf'])->name('laporan.pdf');
-        Route::get('laporan/excel',    [LaporanController::class, 'exportExcel'])->name('laporan.excel');
+    // ── Laporan: Admin + Petugas + Pimpinan ───────────────────────────────
+    Route::prefix('pimpinan')->name('pimpinan.')->middleware('role:admin,petugas,pimpinan')->group(function () {
+        Route::get('laporan',       [LaporanController::class, 'index'])->name('laporan.index');
+        Route::get('laporan/pdf',   [LaporanController::class, 'exportPdf'])->name('laporan.pdf');
+        Route::get('laporan/excel', [LaporanController::class, 'exportExcel'])->name('laporan.excel');
     });
 
     // ── Anggota Routes ────────────────────────────────────────────────────

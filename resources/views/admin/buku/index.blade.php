@@ -26,9 +26,11 @@
                 <h2 class="font-semibold text-gray-900">Data Buku</h2>
                 <p class="text-xs text-gray-500">Kelola data koleksi buku yang tersedia di perpustakaan.</p>
             </div>
+            @if(auth()->user()->isAdmin())
             <a href="{{ route('admin.buku.create') }}" class="flex-shrink-0 inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-xl transition">
                 <i class="fa fa-plus"></i> Tambah Buku
             </a>
+            @endif
         </div>
 
         {{-- Filters --}}
@@ -102,6 +104,7 @@
                                 <a href="{{ route('admin.buku.show', $b) }}" class="w-7 h-7 bg-gray-100 hover:bg-blue-100 text-gray-600 hover:text-blue-600 rounded-lg flex items-center justify-center transition" title="Detail">
                                     <i class="fa fa-eye text-xs"></i>
                                 </a>
+                                @if(auth()->user()->isAdmin())
                                 <a href="{{ route('admin.buku.edit', $b) }}" class="w-7 h-7 bg-gray-100 hover:bg-yellow-100 text-gray-600 hover:text-yellow-600 rounded-lg flex items-center justify-center transition" title="Edit">
                                     <i class="fa fa-pen text-xs"></i>
                                 </a>
@@ -111,6 +114,7 @@
                                         <i class="fa fa-trash text-xs"></i>
                                     </button>
                                 </form>
+                                @endif
                             </div>
                         </td>
                     </tr>

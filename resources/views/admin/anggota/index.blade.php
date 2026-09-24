@@ -24,9 +24,11 @@
                 <h2 class="font-semibold text-gray-900">Data Anggota</h2>
                 <p class="text-xs text-gray-500">Kelola data anggota perpustakaan.</p>
             </div>
+            @if(auth()->user()->isAdmin())
             <a href="{{ route('admin.anggota.create') }}" class="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-xl transition">
                 <i class="fa fa-plus"></i> Tambah Anggota
             </a>
+            @endif
         </div>
 
         <div class="px-5 py-3 border-b border-gray-100">
@@ -96,6 +98,7 @@
                                 <a href="{{ route('admin.anggota.show', $a) }}" class="w-7 h-7 bg-gray-100 hover:bg-blue-100 text-gray-600 hover:text-blue-600 rounded-lg flex items-center justify-center transition">
                                     <i class="fa fa-eye text-xs"></i>
                                 </a>
+                                @if(auth()->user()->isAdmin())
                                 <a href="{{ route('admin.anggota.edit', $a) }}" class="w-7 h-7 bg-gray-100 hover:bg-yellow-100 text-gray-600 hover:text-yellow-600 rounded-lg flex items-center justify-center transition">
                                     <i class="fa fa-pen text-xs"></i>
                                 </a>
@@ -105,6 +108,7 @@
                                         <i class="fa fa-trash text-xs"></i>
                                     </button>
                                 </form>
+                                @endif
                             </div>
                         </td>
                     </tr>
