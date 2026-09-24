@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Sep 2026 pada 06.52
+-- Waktu pembuatan: 24 Sep 2026 pada 16.06
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -57,7 +57,8 @@ INSERT INTO `anggotas` (`id`, `user_id`, `no_anggota`, `nim_nip`, `no_telepon`, 
 (2, 5, 'AGT0002', 'A2022002', '081877735104', 'Jl. Rancaekek No.2', NULL, NULL, NULL, 'Teknik Informatika', 'Universitas Ma\'soem', 'mahasiswa', '2025-07-21', 'aktif', NULL, NULL, '2026-09-21 07:12:10', '2026-09-21 07:12:10'),
 (3, 6, 'AGT0003', 'A2021003', '081354415591', 'Jl. Rancaekek No.3', NULL, NULL, NULL, 'Manajemen', 'Universitas Ma\'soem', 'mahasiswa', '2025-12-21', 'aktif', NULL, NULL, '2026-09-21 07:12:10', '2026-09-21 07:12:10'),
 (4, 7, 'AGT0004', 'D19850101', '081427228315', 'Jl. Rancaekek No.4', NULL, NULL, NULL, 'Teknik Informatika', 'Universitas Ma\'soem', 'dosen', '2025-04-21', 'aktif', NULL, NULL, '2026-09-21 07:12:10', '2026-09-21 07:12:10'),
-(5, 8, 'AGT0005', 'S2020001', '081479097175', 'Jl. Rancaekek No.5', NULL, NULL, NULL, NULL, 'Universitas Ma\'soem', 'staff', '2026-02-21', 'aktif', NULL, NULL, '2026-09-21 07:12:11', '2026-09-21 07:12:11');
+(5, 8, 'AGT0005', 'S2020001', '081479097175', 'Jl. Rancaekek No.5', NULL, NULL, NULL, NULL, 'Universitas Ma\'soem', 'staff', '2026-02-21', 'aktif', NULL, NULL, '2026-09-21 07:12:11', '2026-09-21 07:12:11'),
+(6, 9, 'AGT0006', NULL, '082295173125', 'Cicalengka', NULL, NULL, NULL, NULL, NULL, 'mahasiswa', '2026-09-24', 'aktif', NULL, NULL, '2026-09-24 04:22:20', '2026-09-24 04:22:20');
 
 -- --------------------------------------------------------
 
@@ -90,11 +91,11 @@ CREATE TABLE `bukus` (
 INSERT INTO `bukus` (`id`, `judul`, `penulis`, `penerbit`, `isbn`, `tahun_terbit`, `kategori_id`, `lokasi_rak`, `stok`, `stok_tersedia`, `deskripsi`, `sampul`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Pemrograman Web Dasar', 'Eko Kurniawan', 'Informatika', '978-623-1234-01-1', '2023', 1, NULL, 12, 12, NULL, NULL, 'tersedia', '2026-09-21 07:12:11', '2026-09-21 07:12:11'),
 (2, 'Basis Data', 'Rosa A.S', 'Modula', '978-623-1234-02-8', '2022', 1, NULL, 8, 8, NULL, NULL, 'tersedia', '2026-09-21 07:12:11', '2026-09-21 07:12:11'),
-(3, 'Struktur Data', 'Adi Nugroho', 'Andi', '978-623-1234-03-5', '2021', 1, NULL, 15, 15, NULL, NULL, 'tersedia', '2026-09-21 07:12:11', '2026-09-21 07:12:11'),
+(3, 'Struktur Data', 'Adi Nugroho', 'Andi', '978-623-1234-03-5', '2021', 1, NULL, 15, 15, NULL, NULL, 'tersedia', '2026-09-21 07:12:11', '2026-09-24 04:57:12'),
 (4, 'Manajemen Perpustakaan', 'Haris Setiawan', 'Rosda', '978-623-1234-04-2', '2020', 2, NULL, 5, 5, NULL, NULL, 'tersedia', '2026-09-21 07:12:11', '2026-09-21 07:12:11'),
 (5, 'Pemasaran Digital', 'Philip Kotler', 'Erlangga', '978-623-1234-05-9', '2023', 3, NULL, 20, 20, NULL, NULL, 'tersedia', '2026-09-21 07:12:11', '2026-09-21 07:12:11'),
 (6, 'Algoritma & Pemrograman', 'Munir Rinaldi', 'Informatika', '978-623-1234-06-5', '2022', 1, NULL, 10, 10, NULL, NULL, 'tersedia', '2026-09-21 07:12:11', '2026-09-21 07:12:11'),
-(7, 'Jaringan Komputer', 'Onno W. Purbo', 'Elex Media', '978-623-1234-07-2', '2021', 1, NULL, 7, 7, NULL, NULL, 'tersedia', '2026-09-21 07:12:11', '2026-09-21 07:12:11'),
+(7, 'Jaringan Komputer', 'Onno W. Purbo', 'Elex Media', '978-623-1234-07-2', '2021', 1, NULL, 7, 7, NULL, NULL, 'tersedia', '2026-09-21 07:12:11', '2026-09-24 04:55:26'),
 (8, 'Komunikasi Efektif', 'Deddy Mulyana', 'Remaja Rosda', '978-623-1234-08-9', '2020', 4, NULL, 6, 6, NULL, NULL, 'tersedia', '2026-09-21 07:12:11', '2026-09-21 07:12:11'),
 (9, 'Akuntansi Dasar', 'Soemarso SR', 'Salemba Empat', '978-623-1234-09-6', '2022', 3, NULL, 9, 9, NULL, NULL, 'tersedia', '2026-09-21 07:12:11', '2026-09-21 07:12:11'),
 (10, 'Kecerdasan Buatan', 'Suyanto', 'Informatika', '978-623-1234-10-2', '2023', 1, NULL, 11, 11, NULL, NULL, 'tersedia', '2026-09-21 07:12:11', '2026-09-21 07:12:11');
@@ -136,6 +137,14 @@ CREATE TABLE `detail_peminjamans` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `detail_peminjamans`
+--
+
+INSERT INTO `detail_peminjamans` (`id`, `peminjaman_id`, `buku_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 7, '2026-09-24 04:55:05', '2026-09-24 04:55:05'),
+(2, 2, 3, '2026-09-24 04:57:04', '2026-09-24 04:57:04');
 
 -- --------------------------------------------------------
 
@@ -275,6 +284,14 @@ CREATE TABLE `peminjamans` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data untuk tabel `peminjamans`
+--
+
+INSERT INTO `peminjamans` (`id`, `kode_transaksi`, `anggota_id`, `petugas_id`, `tanggal_pinjam`, `tanggal_jatuh_tempo`, `tanggal_kembali`, `status`, `keterangan`, `created_at`, `updated_at`) VALUES
+(1, 'PMJ-2026-000001', 6, 2, '2026-09-24', '2026-10-01', '2026-09-24', 'dikembalikan', NULL, '2026-09-24 04:55:05', '2026-09-24 04:55:26'),
+(2, 'PMJ-2026-000002', 4, 2, '2026-09-22', '2026-09-23', '2026-09-24', 'dikembalikan', NULL, '2026-09-24 04:57:04', '2026-09-24 04:57:12');
+
 -- --------------------------------------------------------
 
 --
@@ -293,6 +310,14 @@ CREATE TABLE `pengembalians` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `pengembalians`
+--
+
+INSERT INTO `pengembalians` (`id`, `peminjaman_id`, `petugas_id`, `tanggal_pengembalian`, `hari_terlambat`, `denda`, `kondisi_buku`, `catatan`, `created_at`, `updated_at`) VALUES
+(1, 1, 2, '2026-09-24', 0, 0.00, 'baik', NULL, '2026-09-24 04:55:26', '2026-09-24 04:55:26'),
+(2, 2, 2, '2026-09-24', 1, 500.00, 'baik', NULL, '2026-09-24 04:57:12', '2026-09-24 04:57:12');
 
 -- --------------------------------------------------------
 
@@ -326,7 +351,8 @@ INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `pa
 (5, 'Muhammad Rafli', 'rafli', 'rafli@mahasiswa.ac.id', NULL, '$2y$12$2vr33hIbjlcfVlLYlVCRkexnSME55mSFCmigzHzCroXZX50BRMyIq', 'anggota', 1, NULL, '2026-09-21 07:12:10', '2026-09-21 07:12:10'),
 (6, 'Dewi Lestari', 'dewi', 'dewi@mahasiswa.ac.id', NULL, '$2y$12$tjFIkzzAIVvWBUZYs4QDQuAmAZ5kiZojDEOvkOePaZvjecWN5J.Rq', 'anggota', 1, NULL, '2026-09-21 07:12:10', '2026-09-21 07:12:10'),
 (7, 'Budi Santoso', 'budi', 'budi@kampus.ac.id', NULL, '$2y$12$nIu6fznV2WEmMsGyPH4ZFO5SVsX8MdnNBzlJXm3I4W6kmPplFwUzC', 'anggota', 1, NULL, '2026-09-21 07:12:10', '2026-09-21 07:12:10'),
-(8, 'Rina Handayani', 'rina', 'rina@kampus.ac.id', NULL, '$2y$12$I.8vTSaWDzsj1ctIW1XQSOrtAZM2mpkgZel4ID2YVMhrMX1O4sWIe', 'anggota', 1, NULL, '2026-09-21 07:12:11', '2026-09-21 07:12:11');
+(8, 'Rina Handayani', 'rina', 'rina@kampus.ac.id', NULL, '$2y$12$I.8vTSaWDzsj1ctIW1XQSOrtAZM2mpkgZel4ID2YVMhrMX1O4sWIe', 'anggota', 1, NULL, '2026-09-21 07:12:11', '2026-09-21 07:12:11'),
+(9, 'Muhamad Nawawi Ramadhan', 'mnawawi', 'mnawawiramadhan@gmail.com', NULL, '$2y$12$sJyeH5XY13usf3taPYNbYO2YePtM4cGVg6cXJ3/ZwuwXVUoQvbNIa', 'anggota', 1, NULL, '2026-09-24 04:22:20', '2026-09-24 04:22:20');
 
 --
 -- Indexes for dumped tables
@@ -443,7 +469,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `anggotas`
 --
 ALTER TABLE `anggotas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `bukus`
@@ -455,7 +481,7 @@ ALTER TABLE `bukus`
 -- AUTO_INCREMENT untuk tabel `detail_peminjamans`
 --
 ALTER TABLE `detail_peminjamans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `failed_jobs`
@@ -485,19 +511,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `peminjamans`
 --
 ALTER TABLE `peminjamans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengembalians`
 --
 ALTER TABLE `pengembalians`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
